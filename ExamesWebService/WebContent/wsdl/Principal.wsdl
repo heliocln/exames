@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://servicos" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://servicos" xmlns:intf="http://servicos" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://servicos" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="inserir">
+    <complexType>
+     <sequence>
+      <element name="nome" type="xsd:string"/>
+      <element name="classificacao" type="xsd:int"/>
+      <element name="nota" type="xsd:float"/>
+      <element name="idade" type="xsd:int"/>
+      <element name="telefone" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="inserirResponse">
+    <complexType>
+     <sequence>
+      <element name="inserirReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="listar">
+    <complexType/>
+   </element>
+   <element name="listarResponse">
+    <complexType>
+     <sequence>
+      <element name="listarReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deletar">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deletarResponse">
+    <complexType>
+     <sequence>
+      <element name="deletarReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="editar">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+      <element name="campo" type="xsd:string"/>
+      <element name="valor" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="editarResponse">
+    <complexType>
+     <sequence>
+      <element name="editarReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="deletarResponse">
+
+      <wsdl:part element="impl:deletarResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="listarResponse">
+
+      <wsdl:part element="impl:listarResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="inserirResponse">
+
+      <wsdl:part element="impl:inserirResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="inserirRequest">
+
+      <wsdl:part element="impl:inserir" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deletarRequest">
+
+      <wsdl:part element="impl:deletar" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="editarResponse">
+
+      <wsdl:part element="impl:editarResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="listarRequest">
+
+      <wsdl:part element="impl:listar" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="editarRequest">
+
+      <wsdl:part element="impl:editar" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Principal">
+
+      <wsdl:operation name="inserir">
+
+         <wsdl:input message="impl:inserirRequest" name="inserirRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:inserirResponse" name="inserirResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listar">
+
+         <wsdl:input message="impl:listarRequest" name="listarRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:listarResponse" name="listarResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deletar">
+
+         <wsdl:input message="impl:deletarRequest" name="deletarRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deletarResponse" name="deletarResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="editar">
+
+         <wsdl:input message="impl:editarRequest" name="editarRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:editarResponse" name="editarResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="PrincipalSoapBinding" type="impl:Principal">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="inserir">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="inserirRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="inserirResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listar">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="listarRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="listarResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deletar">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deletarRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deletarResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="editar">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="editarRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="editarResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="PrincipalService">
+
+      <wsdl:port binding="impl:PrincipalSoapBinding" name="Principal">
+
+         <wsdlsoap:address location="http://localhost:8080/ExamesWebService/services/Principal"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

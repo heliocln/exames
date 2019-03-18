@@ -1,0 +1,43 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from PrincipalService WSDL service -->
+
+  <service name="Principal" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://servicos"/>
+      <parameter name="wsdlServiceElement" value="PrincipalService"/>
+      <parameter name="schemaQualified" value="http://servicos"/>
+      <parameter name="wsdlServicePort" value="Principal"/>
+      <parameter name="className" value="servicos.PrincipalSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="Principal"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="inserir" qname="operNS:inserir" xmlns:operNS="http://servicos" returnQName="retNS:inserirReturn" xmlns:retNS="http://servicos" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:nome" xmlns:pns="http://servicos" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:classificacao" xmlns:pns="http://servicos" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:nota" xmlns:pns="http://servicos" type="tns:float" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:idade" xmlns:pns="http://servicos" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:telefone" xmlns:pns="http://servicos" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="listar" qname="operNS:listar" xmlns:operNS="http://servicos" returnQName="retNS:listarReturn" xmlns:retNS="http://servicos" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="deletar" qname="operNS:deletar" xmlns:operNS="http://servicos" returnQName="retNS:deletarReturn" xmlns:retNS="http://servicos" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://servicos" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="editar" qname="operNS:editar" xmlns:operNS="http://servicos" returnQName="retNS:editarReturn" xmlns:retNS="http://servicos" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://servicos" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:campo" xmlns:pns="http://servicos" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:valor" xmlns:pns="http://servicos" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="deletar inserir listar editar"/>
+
+  </service>
+</deployment>
